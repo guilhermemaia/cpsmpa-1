@@ -29,6 +29,7 @@ contract UsoDeImagem {
         require(msg.value >= 100 szabo, "Por favor pague o valor mínimo");
         if (agente != address(0)) {
             agente.transfer((msg.value * 10) / 100);
+	    agente.transfer((msg.value * 90) / 100);
         }
     }
 }
