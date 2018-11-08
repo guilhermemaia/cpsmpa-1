@@ -90,3 +90,19 @@ function registrarNomeEmpresa() {
         }
     });
 }
+function definirAgente() {
+	var statusTransacao = document.getElementById("statusTransacaoNomeEmpresa");
+	var qualAgente = document.formDefinirAgente.campoDefinirAgente.value;
+	statusTransacao.innerHTML = "Enviando transação. Por favor monitore seu Metamask.";
+	contratoUsoDeImagem.definirAgente(qualAgente, {from: contaUsuario, gas: 3000000, value: 0}, function (err, resultado) {
+        if (err)    {
+            console.log("Erro");
+			console.error(err);
+			statusTransacao.innerHTML = "Erro: " + err;
+        } else {
+            console.log("Resultado");
+            console.log(resultado);
+            statusTransacao.innerHTML = "Transação enviada ao Blockchain Ethereum. Faça a monitoração pelo hash: " + resultado;
+        }
+    });
+}
